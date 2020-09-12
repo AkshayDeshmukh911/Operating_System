@@ -1,1 +1,181 @@
+Q.1)
+#!/bin/sh
+echo "Enter Num1"
+read num1
+echo "Enter Num2"
+read num2
+echo "Enter Num3"
+read num3
+if [ $num1 -gt $num2 ] && [ $num1 -gt $num3 ]; then
+    echo " $num1 is greatest "
+elif [ $num2 -gt $num1 ] && [ $num2 -gt $num3 ]; then
+    echo " $num2 is greatest "
+else
+    echo " $num3 is greatest "
+fi
 
+Q.2)
+#!/bin/sh
+echo "Enter present year"
+read yr
+ans1=`expr $yr - 1`
+ans2=`expr $yr + 1`
+echo "calender of $ans1"
+cal $ans1
+echo "calender of $ans2"
+cal 5 $ans2 
+
+Q.3)
+#!/bin/bash
+#4. Write a script that print environment variable
+#(Print $HOME,$PATH,$SHELL,$HISTORY,$LOGNAME,$TERM)
+
+display()
+{
+  echo $HOME
+  echo $ -----------
+  echo $PATH
+  echo $ -----------
+  echo $SHELL
+  echo $ -----------
+  echo $HISTORY
+  echo $ -----------
+  echo $LOGNAME
+  echo $ -----------
+  echo $TERM
+}
+echo "Fun call"
+display
+
+Q.4)
+#!/bin/sh
+echo "Enter num to check even or odd "
+read num
+
+ans=`expr $num % 2`
+if [ $ans -eq 0 ] ; then
+   echo "even num"
+else
+  echo "odd num"
+fi
+
+Q.5)
+#!/bin/sh
+display()
+{
+   ls -al
+}
+display
+
+Q.6)
+echo "Enter a year to check leap year or not "
+read y
+ans1=`expr $y % 4`
+ans3=`expr $y % 400`
+ans2=`expr $y % 100`
+if [[ $ans1 -eq 0 && (($ans3 -eq 0 ) || ( $ans2 != 0)) ]]; then
+	echo " Leap Year "
+else
+	echo " not leap year"
+fi
+
+Q.7)
+a=0
+ b=1
+ echo " $a $b "
+ for i in {2..6}
+ do
+     fib=$(( a + b ))
+	 a=$b
+	 b=$fib
+	 echo $fib
+ done
+
+Q.8)
+#!/bin/sh
+
+echo "Enter 1) To find length "
+echo "enter 2) to check equal"
+echo "enter 3) to concate string"
+echo "enter 4)copy two string"
+echo "enter 5)to rev string"
+read choice
+case $choice in
+     1)
+         echo "ENter str to find length"
+         read strl
+         length=0
+         length=`expr $strl | wc -c`
+         length=`expr $length - 1`
+         echo $length
+         ;;
+     2)
+         echo "Enter str1"
+         read str1
+         echo "Enter str2"
+         read str2
+         if [ $str1 = $str2 ] ; then
+            echo "Strings are equal"
+         else
+            echo "strings are not equal"
+         fi
+         ;;
+       3)
+         echo "Enter str1"
+         read str1
+         echo "Enter str2"
+         read str2
+         echo $str1$str2
+         ;;
+        4)
+         echo "Enter str1"
+         read str1
+         echo "Enter str2"
+         read str2
+         copy $str1 $str2
+         $str2
+         ;;
+         5)
+         echo "Enter str to rev"
+         read strr
+          echo $strr | rev
+          ;;
+        *)
+         echo "invalid choice"
+         ;;
+
+esac
+
+Q.9)
+#!/bin/sh
+read -p "enter a : " a
+read b
+read c
+ans=`expr $a + $b + $c` 
+ans1=`expr $ans / 3 `
+echo $ans
+echo " $ans1 is the avg "
+
+Q.10)
+#!/bin/sh
+# 8. Write a shell script to reverse the single strings. 
+
+read -p "Enter string :" str
+echo $str
+ echo $str | rev
+
+Q.11)
+#!/bin/sh
+ #Write a script to print day of the week using a) elif	b) case 
+ echo "Enter num bet 1 to 7 "
+ read num
+   case $num in
+    1)echo "Monday" ;;
+	2)echo "Tuesday" ;;
+	3)echo "Wednesday" ;;
+	4)echo "Thursday" ;;
+	5)echo "Friday" ;;
+	6)echo "Saturday" ;;
+    7)echo "sunday" ;;
+    *)echo "Invalid choice" ;;
+   esac	
